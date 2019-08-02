@@ -13,7 +13,7 @@ pipeline {
             steps {
                     echo "building result test" 
                     dir ('vote') {
-                        sh 'python -m test tests'
+                        sh 'python tests'
                     }
             }
         }
