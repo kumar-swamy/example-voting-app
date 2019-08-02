@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        dockerfile true 
+    } 
+    
+    stages {
+        stage('test') {
+            when{
+            changeset "**/vote/**"
+          }
+            steps {
+                    echo "building result test" 
+                    dir ('vote') {
+                        sh 'python -m test tests'
+                    }
+            }
+        }
+    }
+    post {
+        always {
+            echo 'This pipeline is completed'
+            
+        }
+    }
+}
